@@ -30,3 +30,6 @@ func (uuid *UUID) Equal(equal *UUID) bool {
 	return false
 }
 
+func New() *UUID {
+	return V4()
+}
