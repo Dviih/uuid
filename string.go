@@ -18,3 +18,5 @@
 
 package uuid
 
+const set = "0123456789abcdef"
+
