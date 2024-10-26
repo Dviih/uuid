@@ -25,3 +25,5 @@ import (
 	"errors"
 )
 
+var InvalidLength = errors.New("invalid length")
+
