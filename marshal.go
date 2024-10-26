@@ -31,3 +31,13 @@ func (uuid *UUID) MarshalBinary() ([]byte, error) {
 	return binary.LittleEndian.AppendUint64(binary.LittleEndian.AppendUint64(nil, uuid.a), uuid.b), nil
 }
 
+func (uuid *UUID) UnmarshalBinary(data []byte) error {
+	if len(data) != 16 {
+		return InvalidLength
+	}
+
+	uuid.a = binary.LittleEndian.Uint64(data[:8])
+	uuid.b = binary.LittleEndian.Uint64(data[8:16])
+
+	return nil
+}
