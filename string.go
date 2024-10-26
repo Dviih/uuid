@@ -20,3 +20,17 @@ package uuid
 
 const set = "0123456789abcdef"
 
+func format(num uint64) string {
+	var data []byte
+
+	for ; num > 0; num /= 16 {
+		data = append(data, set[num%16])
+	}
+
+	for i, j := 0, len(data)-1; i < j; i, j = i+1, j-1 {
+		data[i], data[j] = data[j], data[i]
+	}
+
+	return string(data)
+}
+
