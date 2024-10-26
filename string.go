@@ -34,3 +34,13 @@ func format(num uint64) string {
 	return string(data)
 }
 
+func (uuid *UUID) String() string {
+	s := format(uuid.a) + format(uuid.b)
+	if len(s) != 32 {
+		for i := 0; i < 32-len(s); i++ {
+			s += "0"
+		}
+	}
+
+	return s[:8] + "-" + s[8:12] + "-" + s[12:16] + "-" + s[16:20] + "-" + s[20:]
+}
