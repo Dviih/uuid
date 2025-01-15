@@ -36,8 +36,6 @@ func (uuid *UUID) UnmarshalBinary(data []byte) error {
 		return InvalidLength
 	}
 
-	uuid.a = binary.LittleEndian.Uint64(data[:8])
-	uuid.b = binary.LittleEndian.Uint64(data[8:16])
-
+	*uuid = UUID(complex(float64(binary.LittleEndian.Uint64(data[:8])), float64(binary.LittleEndian.Uint64(data[8:16]))))
 	return nil
 }
