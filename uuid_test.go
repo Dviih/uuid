@@ -57,12 +57,12 @@ func TestEqual(t *testing.T) {
 	v4 := V4()
 	data, _ := v4.MarshalBinary()
 
-	v42 := new(UUID)
+	v42 := UUID(0)
 	if err := v42.UnmarshalBinary(data); err != nil {
 		t.Errorf("failed to unmarshal uuid: %v", err)
 	}
 
-	if !v4.Equal(v42) {
+	if v4 != v42 {
 		t.Errorf("v4 and v42 does not match: %s vs %s", v4, v42)
 	}
 }
@@ -70,7 +70,7 @@ func TestEqual(t *testing.T) {
 func TestNotEqual(t *testing.T) {
 	t.Parallel()
 
-	if V4().Equal(V4()) {
+	if V4() == V4() {
 		t.Errorf("two random uuids matches")
 	}
 }
