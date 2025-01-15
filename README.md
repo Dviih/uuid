@@ -1,6 +1,6 @@
 # UUID
 
-## UUID implementation for Go, using a couple `uint64` to represent it.
+## UUID implementation for Go, using a `complex128` to represent it.
 
 ---
 
