@@ -20,6 +20,6 @@ package uuid
 
 type UUID complex128
 
-func New() *UUID {
+func New() UUID {
 	return V4()
 }
