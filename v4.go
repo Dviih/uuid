@@ -22,12 +22,9 @@ import (
 	"math/rand/v2"
 )
 
-func V4() *UUID {
-	a := rand.Uint64()
-	b := rand.Uint64()
+func V4() UUID {
+	a := (rand.Uint64() & 0xFFFFFFFFFFFF0FFF) | 0x0000000000004000
+	b := (rand.Uint64() & 0x0FFFFFFFFFFFFFFF) | 0x8000000000000000
 
-	return &UUID{
-		a: (a & 0xFFFFFFFFFFFF0FFF) | 0x0000000000004000,
-		b: (b & 0x0FFFFFFFFFFFFFFF) | 0x8000000000000000,
-	}
+	return UUID(complex(float64(a), float64(b)))
 }
