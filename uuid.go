@@ -18,9 +18,7 @@
 
 package uuid
 
-type UUID struct {
-	a, b uint64
-}
+type UUID complex128
 
 func New() *UUID {
 	return V4()
