@@ -23,11 +23,9 @@ import (
 	"time"
 )
 
-func V7() *UUID {
+func V7() UUID {
 	a := uint64(time.Now().UnixNano() / time.Millisecond.Milliseconds())
+	a = (a & 0xFFFFFFFFFFFF0FFF) | 0x0000000000007000
 
-	return &UUID{
-		a: (a & 0xFFFFFFFFFFFF0FFF) | 0x0000000000007000,
-		b: rand.Uint64(),
-	}
+	return UUID(complex(float64(a), float64(rand.Uint64())))
 }

@@ -34,8 +34,8 @@ func format(num uint64) string {
 	return string(data)
 }
 
-func (uuid *UUID) String() string {
-	s := format(uuid.a) + format(uuid.b)
+func (uuid UUID) String() string {
+	s := format(uint64(real(uuid))) + format(uint64(imag(uuid)))
 	if len(s) != 32 {
 		for i := 0; i < 32-len(s); i++ {
 			s += "0"

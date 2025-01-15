@@ -27,8 +27,8 @@ import (
 
 var InvalidLength = errors.New("invalid length")
 
-func (uuid *UUID) MarshalBinary() ([]byte, error) {
-	return binary.LittleEndian.AppendUint64(binary.LittleEndian.AppendUint64(nil, uuid.a), uuid.b), nil
+func (uuid UUID) MarshalBinary() ([]byte, error) {
+	return binary.LittleEndian.AppendUint64(binary.LittleEndian.AppendUint64(nil, uint64(real(uuid))), uint64(imag(uuid))), nil
 }
 
 func (uuid *UUID) UnmarshalBinary(data []byte) error {
@@ -36,8 +36,6 @@ func (uuid *UUID) UnmarshalBinary(data []byte) error {
 		return InvalidLength
 	}
 
-	uuid.a = binary.LittleEndian.Uint64(data[:8])
-	uuid.b = binary.LittleEndian.Uint64(data[8:16])
-
+	*uuid = UUID(complex(float64(binary.LittleEndian.Uint64(data[:8])), float64(binary.LittleEndian.Uint64(data[8:16]))))
 	return nil
 }
