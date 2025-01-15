@@ -22,14 +22,6 @@ type UUID struct {
 	a, b uint64
 }
 
-func (uuid *UUID) Equal(equal *UUID) bool {
-	if uuid.a == equal.a && uuid.b == equal.b {
-		return true
-	}
-
-	return false
-}
-
 func New() *UUID {
 	return V4()
 }

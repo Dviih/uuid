@@ -12,7 +12,6 @@
 # Usage
 
 ## UUID
-- `Equal` - Check if the given uuid equals.
 - `MarshalBinary` - Marshal the uuid into a byte array.
 - `UnmarshalBinary` - Unmarshal the byte array into uuid.
 - `String` - A string representation of the uuid.
