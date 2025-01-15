@@ -5,7 +5,7 @@
 ---
 
 ## UUID
-### The `*UUID` structure with some methods to work with uuids
+### The `UUID` is underlying a `complex` with methods for UUID.
 
 ---
 
@@ -18,11 +18,11 @@
 - `String` - A string representation of the uuid.
 
 ## V4
-### Generates a new uuid v4 using `math/rand/v2` and returns `*UUID`
+### Generates a new uuid v4 using `math/rand/v2` and returns `UUID`
 ###### New is the same as calling V4
 
 ## V7
-### Generates a new uuid v7 using `time` and `math/rand/v2` and returns `*UUID`
+### Generates a new uuid v7 using `time` and `math/rand/v2` and returns `UUID`
 
 ---
 
